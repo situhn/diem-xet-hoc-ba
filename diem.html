@@ -1,0 +1,63 @@
+<div id="hocba-calculator">
+    <h3>Tính Điểm Xét Học Bạ</h3>
+    <label for="mon1">Điểm lớp 10:</label>
+    <input type="number" id="mon1" min="0" max="10" step="0.1">
+    
+    <label for="mon2">Điểm lớp 11:</label>
+    <input type="number" id="mon2" min="0" max="10" step="0.1">
+    
+    <label for="mon3">Điểm lớp 12:</label>
+    <input type="number" id="mon3" min="0" max="10" step="0.1">
+    
+    <button onclick="tinhDiem()">Tính điểm</button>
+    
+    <h4>Điểm xét tuyển: <span id="ketqua">0</span></h4>
+    
+    <button onclick="shareResult()">Chia sẻ</button>
+</div>
+
+<script>
+function tinhDiem() {
+    let mon1 = parseFloat(document.getElementById("mon1").value) || 0;
+    let mon2 = parseFloat(document.getElementById("mon2").value) || 0;
+    let mon3 = parseFloat(document.getElementById("mon3").value) || 0;
+
+    let diemTB = ((mon1 + mon2 + mon3) / 3).toFixed(2);
+    document.getElementById("ketqua").innerText = diemTB;
+}
+
+function shareResult() {
+    let diem = document.getElementById("ketqua").innerText;
+    let shareText = Tôi vừa tính điểm xét tuyển học bạ: ${diem}. Hãy thử ngay!;
+    let shareUrl = https://www.facebook.com/sharer/sharer.php?u=https://yourwebsite.com&t=${encodeURIComponent(shareText)};
+    window.open(shareUrl, '_blank');
+}
+</script>
+
+<style>
+#hocba-calculator {
+    max-width: 300px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    background: #f9f9f9;
+}
+input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+}
+button {
+    width: 100%;
+    padding: 8px;
+    background: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 5px;
+}
+button:hover {
+    background: #218838;
+}
+</style>
